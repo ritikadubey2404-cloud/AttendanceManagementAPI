@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37411.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttendanceManaagmentAPI", "AttendanceManaagmentAPI\AttendanceManaagmentAPI.csproj", "{BD786373-60AD-46B3-B1AB-1FCA2E406C21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttendanceApp", "..\AttendanceApp\AttendanceApp\AttendanceApp.csproj", "{F1C6BEF9-EB83-8424-F99C-061545C1E001}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD786373-60AD-46B3-B1AB-1FCA2E406C21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD786373-60AD-46B3-B1AB-1FCA2E406C21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD786373-60AD-46B3-B1AB-1FCA2E406C21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD786373-60AD-46B3-B1AB-1FCA2E406C21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1C6BEF9-EB83-8424-F99C-061545C1E001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1C6BEF9-EB83-8424-F99C-061545C1E001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1C6BEF9-EB83-8424-F99C-061545C1E001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1C6BEF9-EB83-8424-F99C-061545C1E001}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {882CC95A-C5CB-4AFE-A8C6-656620155D03}
+	EndGlobalSection
+EndGlobal

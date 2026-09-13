@@ -1,0 +1,247 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\API folder\\AttendanceManaagmentAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C6BEF9-EB83-8424-F99C-061545C1E001}|..\\AttendanceApp\\AttendanceApp\\AttendanceApp.csproj|c:\\api folder\\attendanceapp\\attendanceapp\\pages\\studentdashboardpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|c:\\api folder\\attendancemanaagmentapi\\attendancemanaagmentapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|solutionrelative:attendancemanaagmentapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C6BEF9-EB83-8424-F99C-061545C1E001}|..\\AttendanceApp\\AttendanceApp\\AttendanceApp.csproj|c:\\api folder\\attendanceapp\\attendanceapp\\pages\\authenticationpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|c:\\api folder\\attendancemanaagmentapi\\attendancemanaagmentapi\\models\\setpasswordrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|solutionrelative:attendancemanaagmentapi\\models\\setpasswordrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|c:\\api folder\\attendancemanaagmentapi\\attendancemanaagmentapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|solutionrelative:attendancemanaagmentapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|c:\\api folder\\attendancemanaagmentapi\\attendancemanaagmentapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|solutionrelative:attendancemanaagmentapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|c:\\api folder\\attendancemanaagmentapi\\attendancemanaagmentapi\\models\\sendotprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|solutionrelative:attendancemanaagmentapi\\models\\sendotprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|c:\\api folder\\attendancemanaagmentapi\\attendancemanaagmentapi\\attendancemanaagmentapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|solutionrelative:attendancemanaagmentapi\\attendancemanaagmentapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|c:\\api folder\\attendancemanaagmentapi\\attendancemanaagmentapi\\models\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|solutionrelative:attendancemanaagmentapi\\models\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|c:\\api folder\\attendancemanaagmentapi\\attendancemanaagmentapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|solutionrelative:attendancemanaagmentapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|c:\\api folder\\attendancemanaagmentapi\\attendancemanaagmentapi\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|solutionrelative:attendancemanaagmentapi\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|c:\\api folder\\attendancemanaagmentapi\\attendancemanaagmentapi\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|solutionrelative:attendancemanaagmentapi\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|c:\\api folder\\attendancemanaagmentapi\\attendancemanaagmentapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|solutionrelative:attendancemanaagmentapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|c:\\api folder\\attendancemanaagmentapi\\attendancemanaagmentapi\\models\\verifyotprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD786373-60AD-46B3-B1AB-1FCA2E406C21}|AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj|solutionrelative:attendancemanaagmentapi\\models\\verifyotprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StudentDashboardPage.xaml",
+              "DocumentMoniker": "C:\\API folder\\AttendanceApp\\AttendanceApp\\Pages\\StudentDashboardPage.xaml",
+              "RelativeDocumentMoniker": "..\\AttendanceApp\\AttendanceApp\\Pages\\StudentDashboardPage.xaml",
+              "ToolTip": "C:\\API folder\\AttendanceApp\\AttendanceApp\\Pages\\StudentDashboardPage.xaml",
+              "RelativeToolTip": "..\\AttendanceApp\\AttendanceApp\\Pages\\StudentDashboardPage.xaml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAwwDMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-07-27T04:28:52.114Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthenticationPage.xaml.cs",
+              "DocumentMoniker": "C:\\API folder\\AttendanceApp\\AttendanceApp\\Pages\\AuthenticationPage.xaml.cs",
+              "RelativeDocumentMoniker": "..\\AttendanceApp\\AttendanceApp\\Pages\\AuthenticationPage.xaml.cs",
+              "ToolTip": "C:\\API folder\\AttendanceApp\\AttendanceApp\\Pages\\AuthenticationPage.xaml.cs",
+              "RelativeToolTip": "..\\AttendanceApp\\AttendanceApp\\Pages\\AuthenticationPage.xaml.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAgwFgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T05:01:56.175Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SetPasswordRequest.cs",
+              "DocumentMoniker": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\Models\\SetPasswordRequest.cs",
+              "RelativeDocumentMoniker": "AttendanceManaagmentAPI\\Models\\SetPasswordRequest.cs",
+              "ToolTip": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\Models\\SetPasswordRequest.cs",
+              "RelativeToolTip": "AttendanceManaagmentAPI\\Models\\SetPasswordRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T22:17:56.155Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "AttendanceManaagmentAPI\\Services\\EmailService.cs",
+              "ToolTip": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\Services\\EmailService.cs",
+              "RelativeToolTip": "AttendanceManaagmentAPI\\Services\\EmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-05T21:42:47.41Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\Program.cs",
+              "RelativeDocumentMoniker": "AttendanceManaagmentAPI\\Program.cs",
+              "ToolTip": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\Program.cs",
+              "RelativeToolTip": "AttendanceManaagmentAPI\\Program.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAIAwwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-05T03:31:42.408Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "AttendanceManaagmentAPI\\appsettings.json",
+              "ToolTip": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\appsettings.json",
+              "RelativeToolTip": "AttendanceManaagmentAPI\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-05T03:01:19.739Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "AttendanceManaagmentAPI\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "AttendanceManaagmentAPI\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAswHoAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-05T02:58:33.269Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "AttendanceManaagmentAPI\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\Properties\\launchSettings.json",
+              "RelativeToolTip": "AttendanceManaagmentAPI\\Properties\\launchSettings.json",
+              "ViewState": "AgIAABIAAAAAAAAAAADwvx4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-27T03:46:05.561Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AttendanceManaagmentAPI.csproj",
+              "DocumentMoniker": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj",
+              "RelativeDocumentMoniker": "AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj",
+              "ToolTip": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj",
+              "RelativeToolTip": "AttendanceManaagmentAPI\\AttendanceManaagmentAPI.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-01T05:13:10.01Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SendOtpRequest.cs",
+              "DocumentMoniker": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\Models\\SendOtpRequest.cs",
+              "RelativeDocumentMoniker": "AttendanceManaagmentAPI\\Models\\SendOtpRequest.cs",
+              "ToolTip": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\Models\\SendOtpRequest.cs",
+              "RelativeToolTip": "AttendanceManaagmentAPI\\Models\\SendOtpRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-05T02:51:27.121Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "AttendanceManaagmentAPI\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "AttendanceManaagmentAPI\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T23:06:19.671Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\Models\\User.cs",
+              "RelativeDocumentMoniker": "AttendanceManaagmentAPI\\Models\\User.cs",
+              "ToolTip": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\Models\\User.cs",
+              "RelativeToolTip": "AttendanceManaagmentAPI\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T23:13:04.91Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LoginRequest.cs",
+              "DocumentMoniker": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\Models\\LoginRequest.cs",
+              "RelativeDocumentMoniker": "AttendanceManaagmentAPI\\Models\\LoginRequest.cs",
+              "ToolTip": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\Models\\LoginRequest.cs",
+              "RelativeToolTip": "AttendanceManaagmentAPI\\Models\\LoginRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-09T03:35:12.186Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "VerifyOtpRequest.cs",
+              "DocumentMoniker": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\Models\\VerifyOtpRequest.cs",
+              "RelativeDocumentMoniker": "AttendanceManaagmentAPI\\Models\\VerifyOtpRequest.cs",
+              "ToolTip": "C:\\API folder\\AttendanceManaagmentAPI\\AttendanceManaagmentAPI\\Models\\VerifyOtpRequest.cs",
+              "RelativeToolTip": "AttendanceManaagmentAPI\\Models\\VerifyOtpRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-08T03:30:03.133Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
