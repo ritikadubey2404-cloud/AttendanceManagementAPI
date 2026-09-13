@@ -1,12 +1,11 @@
 ﻿FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
-COPY ["AttendanceManaagmentAPI/AttendanceManaagmentAPI.csproj", "AttendanceManaagmentAPI/"]
+COPY ["AttendanceManaagmentAPI.csproj", "./"]
 
-RUN dotnet restore "AttendanceManaagmentAPI/AttendanceManaagmentAPI.csproj"
+RUN dotnet restore "AttendanceManaagmentAPI.csproj"
 
 COPY . .
-WORKDIR "/src/AttendanceManaagmentAPI"
 
 RUN dotnet publish "AttendanceManaagmentAPI.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
