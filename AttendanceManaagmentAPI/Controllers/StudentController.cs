@@ -320,15 +320,23 @@ namespace AttendanceManaagmentAPI.Controllers
         public async Task<IActionResult> DeleteStudent(int id)
         {
             using var transaction =
-                await _context.Database.BeginTransactionAsync();
+            await _context.Database.BeginTransactionAsync();
 
-            try
+
+try
             {
+                // ==========================================
+                // FIND STUDENT
+                // ==========================================
+
                 var student = await _context.Students
-                    .FirstOrDefaultAsync(s => s.StudentId == id);
+                    .FirstOrDefaultAsync(s =>
+                        s.StudentId == id);
 
                 if (student == null)
                 {
+                    await transaction.RollbackAsync();
+
                     return NotFound(new
                     {
                         message = "Student not found."
@@ -353,7 +361,8 @@ namespace AttendanceManaagmentAPI.Controllers
                 // ==========================================
 
                 var leaves = await _context.LeaveApplications
-                    .Where(l => l.StudentId == id)
+                    .Where(l =>
+                        l.StudentId == student.StudentId)
                     .ToListAsync();
 
                 if (leaves.Count > 0)
@@ -366,7 +375,8 @@ namespace AttendanceManaagmentAPI.Controllers
                 // ==========================================
 
                 var notifications = await _context.Notifications
-                    .Where(n => n.StudentId == id)
+                    .Where(n =>
+                        n.StudentId == student.StudentId)
                     .ToListAsync();
 
                 if (notifications.Count > 0)
@@ -375,11 +385,12 @@ namespace AttendanceManaagmentAPI.Controllers
                 }
 
                 // ==========================================
-                // DELETE ATTENDANCE RECORDS
+                // DELETE ATTENDANCE
                 // ==========================================
 
                 var attendance = await _context.Attendances
-                    .Where(a => a.StudentId == id)
+                    .Where(a =>
+                        a.StudentId == student.StudentId)
                     .ToListAsync();
 
                 if (attendance.Count > 0)
@@ -394,7 +405,7 @@ namespace AttendanceManaagmentAPI.Controllers
                 _context.Students.Remove(student);
 
                 // ==========================================
-                // DELETE LOGIN USER
+                // DELETE USER
                 // ==========================================
 
                 if (user != null)
@@ -403,7 +414,7 @@ namespace AttendanceManaagmentAPI.Controllers
                 }
 
                 // ==========================================
-                // SAVE
+                // SAVE ALL CHANGES
                 // ==========================================
 
                 await _context.SaveChangesAsync();
@@ -413,7 +424,22 @@ namespace AttendanceManaagmentAPI.Controllers
                 return Ok(new
                 {
                     message =
-                        "Student deleted successfully from database."
+                        "Student and login account deleted successfully."
+                });
+            }
+            catch (DbUpdateException ex)
+            {
+                await transaction.RollbackAsync();
+
+                string error =
+                    ex.InnerException?.InnerException?.Message
+                    ?? ex.InnerException?.Message
+                    ?? ex.Message;
+
+                return StatusCode(500, new
+                {
+                    message = "Student delete failed.",
+                    error = error
                 });
             }
             catch (Exception ex)
@@ -423,12 +449,13 @@ namespace AttendanceManaagmentAPI.Controllers
                 return StatusCode(500, new
                 {
                     message = "Student delete failed.",
-                    error = ex.InnerException?.InnerException?.Message
-                            ?? ex.InnerException?.Message
-                            ?? ex.Message
+                    error = ex.Message
                 });
             }
-        }
+
+
+}
+
         // ==========================================
         // APPLY LEAVE
         // ==========================================

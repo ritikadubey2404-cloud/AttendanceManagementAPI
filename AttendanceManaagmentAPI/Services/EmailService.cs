@@ -1,39 +1,75 @@
-﻿using MailKit.Net.Smtp;
-using MimeKit;
-using MailKit.Security;
-using System.Threading.Tasks;
+﻿using System.Net.Http.Headers;
+using System.Text;
+using System.Text.Json;
 
 namespace AttendanceManaagmentAPI.Services
 {
     public class EmailService
     {
-        public async Task SendEmailAsync(string toEmail, string subject, string body)
+        private readonly HttpClient _httpClient;
+
+
+    public EmailService()
         {
-            var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Attendance Management", "ritikadubey2404@gmail.com"));
-            message.To.Add(MailboxAddress.Parse(toEmail));
-            message.Subject = subject;
-            message.Body = new TextPart("plain")
-            {
-                Text = body
-            };
-            using var client = new SmtpClient();
-            client.Timeout = 10000;
-
-            try
-            {
-                await client.ConnectAsync("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-                await client.AuthenticateAsync("ritikadubey2404@gmail.com", "bkomcsjupgfhmskt");
-                await client.SendAsync(message);
-                await client.DisconnectAsync(true);
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                throw;
-            }
-
+            _httpClient = new HttpClient();
         }
 
+        public async Task SendEmailAsync(
+            string toEmail,
+            string subject,
+            string body)
+        {
+            string? apiKey =
+                Environment.GetEnvironmentVariable("RESEND_API_KEY");
+
+            if (string.IsNullOrWhiteSpace(apiKey))
+            {
+                throw new Exception(
+                    "RESEND_API_KEY environment variable is not configured.");
+            }
+
+            var request = new HttpRequestMessage(
+                HttpMethod.Post,
+                "https://api.resend.com/emails");
+
+            request.Headers.Authorization =
+                new AuthenticationHeaderValue(
+                    "Bearer",
+                    apiKey);
+
+            var emailData = new
+            {
+                from = "Attendance Management <onboarding@resend.dev>",
+                to = new[] { toEmail },
+                subject = subject,
+                text = body
+            };
+
+            string json =
+                JsonSerializer.Serialize(emailData);
+
+            request.Content =
+                new StringContent(
+                    json,
+                    Encoding.UTF8,
+                    "application/json");
+
+            HttpResponseMessage response =
+                await _httpClient.SendAsync(request);
+
+            string responseBody =
+                await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(
+                    $"Resend email failed. " +
+                    $"Status: {(int)response.StatusCode} " +
+                    $"{response.StatusCode}. " +
+                    $"Response: {responseBody}");
+            }
+        }
     }
+
+
 }
