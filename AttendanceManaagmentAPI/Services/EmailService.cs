@@ -11,10 +11,10 @@ namespace AttendanceManaagmentAPI.Services
         string body)
         {
             string? gmailEmail =
-            Environment.GetEnvironmentVariable("ritikadubey2404@gmail.com");
+            Environment.GetEnvironmentVariable("GMAIL_EMAIL");
 
             string? gmailAppPassword =
-                Environment.GetEnvironmentVariable("qbqgreikxjchuwzf");
+                Environment.GetEnvironmentVariable("GMAIL_APP_PASSWORD");
 
             if (string.IsNullOrWhiteSpace(gmailEmail))
             {
@@ -44,9 +44,11 @@ namespace AttendanceManaagmentAPI.Services
                 587);
 
             smtpClient.EnableSsl = true;
-            smtpClient.Credentials = new NetworkCredential(
-                gmailEmail,
-                gmailAppPassword);
+
+            smtpClient.Credentials =
+                new NetworkCredential(
+                    gmailEmail,
+                    gmailAppPassword);
 
             await smtpClient.SendMailAsync(mailMessage);
         }
