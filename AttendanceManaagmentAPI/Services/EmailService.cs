@@ -1,57 +1,98 @@
-﻿using System.Net;
-using System.Net.Mail;
+﻿using System.Net.Http.Headers;
+using System.Text;
+using System.Text.Json;
 
 namespace AttendanceManaagmentAPI.Services
 {
     public class EmailService
     {
-        public async Task SendEmailAsync(
-        string toEmail,
-        string subject,
-        string body)
+        private readonly HttpClient _httpClient;
+
+
+    public EmailService()
         {
-            string? gmailEmail =
-            Environment.GetEnvironmentVariable("GMAIL_EMAIL");
+            _httpClient = new HttpClient();
+        }
 
-            string? gmailAppPassword =
-                Environment.GetEnvironmentVariable("GMAIL_APP_PASSWORD");
+        public async Task SendEmailAsync(
+            string toEmail,
+            string subject,
+            string body)
+        {
+            string? apiKey =
+                Environment.GetEnvironmentVariable("BREVO_API_KEY");
 
-            if (string.IsNullOrWhiteSpace(gmailEmail))
+            if (string.IsNullOrWhiteSpace(apiKey))
             {
                 throw new Exception(
-                    "GMAIL_EMAIL environment variable is not configured.");
+                    "BREVO_API_KEY environment variable is not configured.");
             }
 
-            if (string.IsNullOrWhiteSpace(gmailAppPassword))
+            string? senderEmail =
+                Environment.GetEnvironmentVariable("BREVO_EMAIL");
+
+            if (string.IsNullOrWhiteSpace(senderEmail))
             {
                 throw new Exception(
-                    "GMAIL_APP_PASSWORD environment variable is not configured.");
+                    "BREVO_EMAIL environment variable is not configured.");
             }
 
-            using var mailMessage = new MailMessage();
+            var emailData = new
+            {
+                sender = new
+                {
+                    name = "Attendance Management",
+                    email = senderEmail
+                },
 
-            mailMessage.From = new MailAddress(
-                gmailEmail,
-                "Attendance Management");
+                to = new[]
+                {
+                new
+                {
+                    email = toEmail
+                }
+            },
 
-            mailMessage.To.Add(toEmail);
-            mailMessage.Subject = subject;
-            mailMessage.Body = body;
-            mailMessage.IsBodyHtml = false;
+                subject = subject,
+                textContent = body
+            };
 
-            using var smtpClient = new SmtpClient(
-                "smtp.gmail.com",
-                587);
+            string json =
+                JsonSerializer.Serialize(emailData);
 
-            smtpClient.EnableSsl = true;
+            using var request =
+                new HttpRequestMessage(
+                    HttpMethod.Post,
+                    "https://api.brevo.com/v3/smtp/email");
 
-            smtpClient.Credentials =
-                new NetworkCredential(
-                    gmailEmail,
-                    gmailAppPassword);
+            request.Headers.Add("api-key", apiKey);
 
-            await smtpClient.SendMailAsync(mailMessage);
+            request.Headers.Accept.Add(
+                new MediaTypeWithQualityHeaderValue(
+                    "application/json"));
+
+            request.Content =
+                new StringContent(
+                    json,
+                    Encoding.UTF8,
+                    "application/json");
+
+            HttpResponseMessage response =
+                await _httpClient.SendAsync(request);
+
+            string responseBody =
+                await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(
+                    $"Brevo email failed. " +
+                    $"Status: {(int)response.StatusCode} " +
+                    $"{response.StatusCode}. " +
+                    $"Response: {responseBody}");
+            }
         }
     }
+
 
 }
