@@ -1,75 +1,55 @@
-﻿using System.Net.Http.Headers;
-using System.Text;
-using System.Text.Json;
+﻿using System.Net;
+using System.Net.Mail;
 
 namespace AttendanceManaagmentAPI.Services
 {
     public class EmailService
     {
-        private readonly HttpClient _httpClient;
-
-
-    public EmailService()
-        {
-            _httpClient = new HttpClient();
-        }
-
         public async Task SendEmailAsync(
-            string toEmail,
-            string subject,
-            string body)
+        string toEmail,
+        string subject,
+        string body)
         {
-            string? apiKey =
-                Environment.GetEnvironmentVariable("RESEND_API_KEY");
+            string? gmailEmail =
+            Environment.GetEnvironmentVariable("ritikadubey2404@gmail.com");
 
-            if (string.IsNullOrWhiteSpace(apiKey))
+            string? gmailAppPassword =
+                Environment.GetEnvironmentVariable("qbqgreikxjchuwzf");
+
+            if (string.IsNullOrWhiteSpace(gmailEmail))
             {
                 throw new Exception(
-                    "RESEND_API_KEY environment variable is not configured.");
+                    "GMAIL_EMAIL environment variable is not configured.");
             }
 
-            var request = new HttpRequestMessage(
-                HttpMethod.Post,
-                "https://api.resend.com/emails");
-
-            request.Headers.Authorization =
-                new AuthenticationHeaderValue(
-                    "Bearer",
-                    apiKey);
-
-            var emailData = new
-            {
-                from = "Attendance Management <onboarding@resend.dev>",
-                to = new[] { toEmail },
-                subject = subject,
-                text = body
-            };
-
-            string json =
-                JsonSerializer.Serialize(emailData);
-
-            request.Content =
-                new StringContent(
-                    json,
-                    Encoding.UTF8,
-                    "application/json");
-
-            HttpResponseMessage response =
-                await _httpClient.SendAsync(request);
-
-            string responseBody =
-                await response.Content.ReadAsStringAsync();
-
-            if (!response.IsSuccessStatusCode)
+            if (string.IsNullOrWhiteSpace(gmailAppPassword))
             {
                 throw new Exception(
-                    $"Resend email failed. " +
-                    $"Status: {(int)response.StatusCode} " +
-                    $"{response.StatusCode}. " +
-                    $"Response: {responseBody}");
+                    "GMAIL_APP_PASSWORD environment variable is not configured.");
             }
+
+            using var mailMessage = new MailMessage();
+
+            mailMessage.From = new MailAddress(
+                gmailEmail,
+                "Attendance Management");
+
+            mailMessage.To.Add(toEmail);
+            mailMessage.Subject = subject;
+            mailMessage.Body = body;
+            mailMessage.IsBodyHtml = false;
+
+            using var smtpClient = new SmtpClient(
+                "smtp.gmail.com",
+                587);
+
+            smtpClient.EnableSsl = true;
+            smtpClient.Credentials = new NetworkCredential(
+                gmailEmail,
+                gmailAppPassword);
+
+            await smtpClient.SendMailAsync(mailMessage);
         }
     }
-
 
 }
