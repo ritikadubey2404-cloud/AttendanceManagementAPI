@@ -8,9 +8,10 @@ namespace AttendanceManaagmentAPI.Services
     {
         private readonly IServiceScopeFactory _scopeFactory;
 
-        // 8:30 PM
-        private static readonly TimeSpan AbsentTime =
-            new TimeSpan(20, 30, 0);
+
+    // 1:00 PM
+    private static readonly TimeSpan AbsentTime =
+        new TimeSpan(13, 0, 0);
 
         public AttendanceAutoAbsentService(
             IServiceScopeFactory scopeFactory)
@@ -27,21 +28,24 @@ namespace AttendanceManaagmentAPI.Services
                 {
                     DateTime now = DateTime.Now;
 
-                    // Sirf 8:30 PM ke baad automatic absent lagana hai
+                    // Sirf 1:00 PM ke baad automatic absent lagana hai
                     if (now.TimeOfDay >= AbsentTime)
                     {
                         await MarkAbsentStudentsAsync(stoppingToken);
 
                         // Aaj ka kaam ho gaya.
-                        // Kal dobara check karenge.
+                        // Kal 1:00 PM ke baad dobara check karenge.
                         DateTime tomorrow =
                             DateTime.Today.AddDays(1).AddMinutes(1);
 
-                        TimeSpan waitTime = tomorrow - DateTime.Now;
+                        TimeSpan waitTime =
+                            tomorrow - DateTime.Now;
 
                         if (waitTime.TotalMilliseconds > 0)
                         {
-                            await Task.Delay(waitTime, stoppingToken);
+                            await Task.Delay(
+                                waitTime,
+                                stoppingToken);
                         }
                     }
                     else
@@ -83,11 +87,26 @@ namespace AttendanceManaagmentAPI.Services
 
             // Active students
             var students = await context.Students
-            .Where(s => s.IsActive == true)
-            .ToListAsync(cancellationToken);
+                .Where(s => s.IsActive == true)
+                .ToListAsync(cancellationToken);
+
+            // Aaj approved leave par students
+            var approvedLeaves = await context.LeaveApplications
+                .Where(l =>
+                    l.LeaveDate.Date == today &&
+                    l.Status == "Approved")
+                .Select(l => l.StudentId)
+                .Distinct()
+                .ToListAsync(cancellationToken);
 
             foreach (var student in students)
             {
+                // Approved leave wale student ko Absent mat karo
+                if (approvedLeaves.Contains(student.StudentId))
+                {
+                    continue;
+                }
+
                 // Aaj ki attendance check karo
                 var todayAttendance =
                     await context.Attendances
@@ -98,7 +117,7 @@ namespace AttendanceManaagmentAPI.Services
                                 a.AttendanceDate.Value.Date == today,
                             cancellationToken);
 
-                // Agar attendance nahi hai,
+                // Agar aaj koi attendance nahi hai,
                 // to automatic Absent create karo.
                 if (todayAttendance == null)
                 {
@@ -108,18 +127,21 @@ namespace AttendanceManaagmentAPI.Services
                             StudentId = student.StudentId,
                             TeacherId = null,
                             AttendanceDate = today,
-                            ScanTime = DateTime.Now,
+                            ScanTime = null,
                             Status = "Absent",
                             Remarks =
-                                "Automatically marked Absent at 8:30 PM"
+                                "Automatically marked Absent after 01:00 PM"
                         });
                 }
             }
 
-            await context.SaveChangesAsync(cancellationToken);
+            await context.SaveChangesAsync(
+                cancellationToken);
 
             Console.WriteLine(
                 $"Automatic Absent check completed for {today:yyyy-MM-dd}");
         }
     }
+
+
 }

@@ -10,9 +10,22 @@ namespace AttendanceManaagmentAPI.Controllers
     public class AttendanceController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private static DateTime GetIndiaTime()
+        {
+            TimeZoneInfo indiaTimeZone =
+            TimeZoneInfo.FindSystemTimeZoneById("Asia/Kolkata");
 
 
-    public AttendanceController(ApplicationDbContext context)
+            return TimeZoneInfo.ConvertTimeFromUtc(
+                DateTime.UtcNow,
+                indiaTimeZone);
+
+
+}
+
+
+
+        public AttendanceController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -22,8 +35,9 @@ namespace AttendanceManaagmentAPI.Controllers
         // ============================================================
         private async Task MarkAutomaticAbsentsAsync()
         {
-            DateTime now = DateTime.Now;
-            DateTime today = DateTime.Today;
+            DateTime now = GetIndiaTime();
+            DateTime today = now.Date;
+
 
             // Before 01:00 PM -> do nothing
             if (now.TimeOfDay < new TimeSpan(13, 0, 0))
@@ -376,13 +390,14 @@ namespace AttendanceManaagmentAPI.Controllers
         // ============================================================
         [HttpGet("logs/teacher/{teacherId}")]
         public async Task<IActionResult> GetTeacherAttendanceLogs(
-            int teacherId)
+ int teacherId)
         {
             try
             {
                 await MarkAutomaticAbsentsAsync();
 
-                if (teacherId <= 0)
+
+    if (teacherId <= 0)
                 {
                     return BadRequest(new
                     {
@@ -401,27 +416,90 @@ namespace AttendanceManaagmentAPI.Controllers
                     });
                 }
 
-                var records = await _context.Attendances
-                    .Where(a => a.TeacherId == teacherId)
-                    .Join(
-                        _context.Students,
-                        attendance => attendance.StudentId,
-                        student => student.StudentId,
-                        (attendance, student) => new
-                        {
-                            attendance.AttendanceId,
-                            student.StudentId,
-                            StudentName = student.FullName,
-                            student.EnrollmentNo,
-                            attendance.AttendanceDate,
-                            attendance.ScanTime,
-                            attendance.Status,
-                            attendance.TeacherId,
-                            attendance.Remarks
-                        })
-                    .OrderByDescending(a => a.AttendanceDate)
-                    .ThenByDescending(a => a.ScanTime)
+                // ============================================================
+                // ALL STUDENTS ADDED BY ADMIN
+                // ============================================================
+
+                var students = await _context.Students
+                    .AsNoTracking()
+                    .Where(s => s.IsActive == true)
+                    .Select(s => new
+                    {
+                        s.StudentId,
+                        StudentName = s.FullName,
+                        s.EnrollmentNo
+                    })
+                    .OrderBy(s => s.StudentName)
                     .ToListAsync();
+
+                // ============================================================
+                // TODAY'S ATTENDANCE
+                // ============================================================
+
+                DateTime today = GetIndiaTime().Date;
+                DateTime tomorrow = today.AddDays(1);
+
+                var attendanceRecords = await _context.Attendances
+                    .AsNoTracking()
+                    .Where(a =>
+                        a.AttendanceDate.HasValue &&
+                        a.AttendanceDate.Value >= today &&
+                        a.AttendanceDate.Value < tomorrow)
+                    .Select(a => new
+                    {
+                        a.AttendanceId,
+                        a.StudentId,
+                        a.AttendanceDate,
+                        a.ScanTime,
+                        a.Status,
+                        a.TeacherId,
+                        a.Remarks
+                    })
+                    .ToListAsync();
+
+                // ============================================================
+                // EVERY ADMIN STUDENT WILL BE SHOWN
+                // ============================================================
+
+                var records = students
+                    .Select(student =>
+                    {
+                        var attendance = attendanceRecords
+                            .Where(a => a.StudentId == student.StudentId)
+                            .OrderByDescending(a => a.ScanTime)
+                            .FirstOrDefault();
+
+                        return new
+                        {
+                            AttendanceId =
+                                attendance?.AttendanceId ?? 0,
+
+                            StudentId =
+                                student.StudentId,
+
+                            StudentName =
+                                student.StudentName,
+
+                            EnrollmentNo =
+                                student.EnrollmentNo,
+
+                            AttendanceDate =
+                                attendance?.AttendanceDate,
+
+                            ScanTime =
+                                attendance?.ScanTime,
+
+                            Status =
+                                attendance?.Status ?? "Not Marked",
+
+                            TeacherId =
+                                attendance?.TeacherId,
+
+                            Remarks =
+                                attendance?.Remarks
+                        };
+                    })
+                    .ToList();
 
                 return Ok(records);
             }
@@ -429,12 +507,18 @@ namespace AttendanceManaagmentAPI.Controllers
             {
                 return BadRequest(new
                 {
-                    message = "Unable to load teacher attendance records.",
+                    message =
+                        "Unable to load teacher attendance records.",
+
                     error = ex.Message,
-                    innerError = ex.InnerException?.Message
+
+                    innerError =
+                        ex.InnerException?.Message
                 });
             }
-        }
+
+
+}
 
         // ============================================================
         // MARK ATTENDANCE BY BARCODE
@@ -488,8 +572,11 @@ namespace AttendanceManaagmentAPI.Controllers
                     });
                 }
 
-                DateTime attendanceDate = DateTime.Today;
-                DateTime scanTime = DateTime.Now;
+                DateTime indiaNow = GetIndiaTime();
+
+                DateTime attendanceDate = indiaNow.Date;
+                DateTime scanTime = indiaNow;
+
 
                 // ====================================================
                 // AFTER 01:00 PM -> NEW ATTENDANCE CANNOT BE MARKED
@@ -636,15 +723,18 @@ namespace AttendanceManaagmentAPI.Controllers
                     });
                 }
 
+                DateTime indiaNow = GetIndiaTime();
+
                 DateTime attendanceDate =
-                    request.AttendanceDate == default
-                        ? DateTime.Today
-                        : request.AttendanceDate.Date;
+                request.AttendanceDate == default
+                ? indiaNow.Date
+                : request.AttendanceDate.Date;
 
                 DateTime scanTime =
-                    request.ScanTime == default
-                        ? DateTime.Now
-                        : request.ScanTime;
+                request.ScanTime == default
+                ? indiaNow
+                : request.ScanTime;
+
 
                 // Prevent manual attendance after 01:00 PM
                 if (scanTime.TimeOfDay >= new TimeSpan(13, 0, 0))
