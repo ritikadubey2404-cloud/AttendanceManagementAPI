@@ -874,7 +874,7 @@ namespace AttendanceManaagmentAPI.Controllers
                 var attendanceRecords = await _context.Attendances
                     .AsNoTracking()
                     .Where(a =>
-                        a.TeacherId == teacherId &&
+                        
                         a.AttendanceDate.HasValue &&
                         a.AttendanceDate.Value >= monthStart &&
                         a.AttendanceDate.Value < nextMonth)
