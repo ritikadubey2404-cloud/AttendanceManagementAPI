@@ -725,15 +725,9 @@ namespace AttendanceManaagmentAPI.Controllers
 
                 DateTime indiaNow = GetIndiaTime();
 
-                DateTime attendanceDate =
-                request.AttendanceDate == default
-                ? indiaNow.Date
-                : request.AttendanceDate.Date;
+                DateTime attendanceDate = indiaNow.Date;
 
-                DateTime scanTime =
-                request.ScanTime == default
-                ? indiaNow
-                : request.ScanTime;
+                DateTime scanTime = indiaNow;
 
 
                 // Prevent manual attendance after 01:00 PM
